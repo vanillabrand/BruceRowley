@@ -492,6 +492,179 @@
             font-weight: 300;
         }
 
+
+        /* ═══════════════════════════════════════════
+           STEALTH LOGO SYSTEM
+           ═══════════════════════════════════════════ */
+
+        /* Navbar logo with image */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: brightness(1.1);
+            transition: transform 0.4s var(--ease-out-expo), filter 0.4s var(--ease-out-expo);
+        }
+
+        .nav-logo:hover .nav-logo-img {
+            transform: rotateY(180deg) scale(1.1);
+            filter: brightness(1.4) drop-shadow(0 0 8px var(--rose-glow));
+        }
+
+        /* Background watermark — fixed, dim, covers viewport */
+        .bg-watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-watermark-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70vmin;
+            height: 70vmin;
+            transform: translate(-50%, -50%);
+            object-fit: contain;
+            opacity: 0.018;
+            filter: grayscale(0.3);
+            animation: watermarkPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes watermarkPulse {
+            0%, 100% { opacity: 0.018; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            50% { opacity: 0.028; transform: translate(-50%, -50%) scale(1.03) rotate(1deg); }
+        }
+
+        /* Hero 3D logo showcase */
+        .hero-logo-3d {
+            position: relative;
+            margin-bottom: 2rem;
+            perspective: 1000px;
+            display: inline-block;
+        }
+
+        .hero-logo-3d-inner {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: logo3DIntro 2.5s var(--ease-out-expo) 0.2s both;
+        }
+
+        .hero-logo-3d-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(207, 20, 43, 0.3))
+                    drop-shadow(0 0 60px rgba(207, 20, 43, 0.1));
+        }
+
+        /* Glow ring behind logo */
+        .hero-logo-3d-inner::before {
+            content: '';
+            position: absolute;
+            inset: -15%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(207,20,43,0.12) 0%, transparent 70%);
+            animation: glowRingPulse 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        /* Scan line sweeping across */
+        .hero-logo-3d-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            animation: logoScanline 4s ease-in-out 2.5s infinite;
+            z-index: 2;
+        }
+
+        @keyframes logo3DIntro {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateY(-90deg) rotateX(20deg) scale(0.5) translateZ(-100px);
+                filter: blur(15px);
+            }
+            30% {
+                opacity: 0.6;
+                filter: blur(5px);
+            }
+            60% {
+                transform: perspective(1000px) rotateY(15deg) rotateX(-5deg) scale(1.05) translateZ(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1) translateZ(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes glowRingPulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes logoScanline {
+            0%, 100% { left: -50%; }
+            50% { left: 100%; }
+        }
+
+        /* Continuous subtle float after intro */
+        .hero-logo-3d-inner {
+            animation: logo3DIntro 2.5s var(--ease-out-expo) 0.2s both,
+                       logoFloat 6s ease-in-out 3s infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px);
+            }
+            25% {
+                transform: perspective(1000px) rotateY(3deg) rotateX(1deg) translateY(-4px);
+            }
+            50% {
+                transform: perspective(1000px) rotateY(-2deg) rotateX(-1deg) translateY(-2px);
+            }
+            75% {
+                transform: perspective(1000px) rotateY(1deg) rotateX(2deg) translateY(-5px);
+            }
+        }
+
+        /* Interactive tilt on the hero logo */
+        .hero-logo-3d:hover .hero-logo-3d-inner {
+            animation-play-state: paused;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .hero-logo-3d-inner {
+                width: 90px;
+                height: 90px;
+            }
+            .bg-watermark-img {
+                width: 90vmin;
+                height: 90vmin;
+                opacity: 0.012;
+            }
+        }
+
         /* ═══════════════════════════════════════════
            BALLER REVEAL & TRANSITION SYSTEM
            ═══════════════════════════════════════════ */
@@ -1616,12 +1789,15 @@
     </style>
 </head>
 <body>
+    <!-- Background watermark -->
+    <div class="bg-watermark"><img src="assets/logo-stealth.webp" alt="" class="bg-watermark-img"></div>
+
     <!-- Cursor glow -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="nav-logo">biffer<span>.</span>rowley</a>
+        <a href="#" class="nav-logo"><img src="assets/logo-stealth.webp" alt="BR" class="nav-logo-img">biffer<span>.</span>rowley</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -1643,6 +1819,11 @@
             <div class="hero-vignette"></div>
         </div>
         <div class="hero-content">
+            <div class="hero-logo-3d" id="heroLogo">
+                <div class="hero-logo-3d-inner">
+                    <img src="assets/logo-stealth.webp" alt="BR Logo">
+                </div>
+            </div>
             <div class="hero-tag">
                 <span class="dot"></span>
                 Available for collaboration
@@ -2403,6 +2584,29 @@
             });
         }, { threshold: 0.3 });
         document.querySelectorAll('.about-stats').forEach(el => statObs.observe(el));
+
+
+        /* ═══════════════════════════════════════════
+           HERO LOGO 3D MOUSE TILT
+           ═══════════════════════════════════════════ */
+        (function heroLogoTilt() {
+            const logo = document.getElementById('heroLogo');
+            if (!logo) return;
+            const inner = logo.querySelector('.hero-logo-3d-inner');
+
+            logo.addEventListener('mousemove', e => {
+                const rect = logo.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                inner.style.animation = 'none';
+                inner.style.transform = `perspective(1000px) rotateY(${x * 25}deg) rotateX(${-y * 20}deg) translateZ(15px) scale(1.08)`;
+            });
+
+            logo.addEventListener('mouseleave', () => {
+                inner.style.transform = '';
+                inner.style.animation = '';
+            });
+        })();
 
         /* ═══════════════════════════════════════════
            CAROUSEL ENGINE
