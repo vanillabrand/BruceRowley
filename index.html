@@ -669,97 +669,34 @@
            BALLER REVEAL & TRANSITION SYSTEM
            ═══════════════════════════════════════════ */
 
-        /* Base reveal — 3D rise + blur */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) rotateX(6deg);
-            transform-origin: center bottom;
-            transition:
-                opacity 1s var(--ease-out-expo),
-                transform 1.2s var(--ease-out-expo),
-                filter 1s var(--ease-out-expo);
-            filter: blur(3px);
-            will-change: transform, opacity, filter;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) rotateX(0deg);
-            filter: blur(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.12s; }
-        .reveal-delay-2 { transition-delay: 0.24s; }
-        .reveal-delay-3 { transition-delay: 0.36s; }
-        .reveal-delay-4 { transition-delay: 0.48s; }
-        .reveal-delay-5 { transition-delay: 0.60s; }
-
-        /* Mask-wipe — clips in from left */
-        .reveal-mask {
-            opacity: 0;
-            clip-path: inset(0 100% 0 0);
-            transition: opacity 0.6s var(--ease-out-expo), clip-path 1.2s var(--ease-out-expo);
-        }
-        .reveal-mask.visible {
-            opacity: 1;
-            clip-path: inset(0 0% 0 0);
-        }
-
-        /* Scale-in */
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.88) translateY(20px);
-            filter: blur(2px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 1s var(--ease-out-expo), filter 0.8s var(--ease-out-expo);
-        }
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-            filter: blur(0);
-        }
-
-        /* Slide from left */
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-80px) rotateY(6deg);
-            transition: opacity 0.8s var(--ease-out-expo), transform 1.1s var(--ease-out-expo);
-        }
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0) rotateY(0);
-        }
-
-        /* Slide from right */
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(80px) rotateY(-6deg);
-            transition: opacity 0.8s var(--ease-out-expo), transform 1.1s var(--ease-out-expo);
-        }
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0) rotateY(0);
-        }
-
-        /* 3D flip */
-        .reveal-flip {
-            opacity: 0;
-            transform: perspective(800px) rotateY(-20deg) translateZ(-50px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
-        }
-        .reveal-flip.visible {
-            opacity: 1;
-            transform: perspective(800px) rotateY(0) translateZ(0);
-        }
-
-        /* Glitch entrance */
+        /* Simple fade-up reveal */
+        .reveal,
+        .reveal-mask,
+        .reveal-scale,
+        .reveal-left,
+        .reveal-right,
+        .reveal-flip,
         .reveal-glitch {
             opacity: 0;
-            transform: translateX(-10px) skewX(-3deg);
-            transition: opacity 0.5s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
+        .reveal.visible,
+        .reveal-mask.visible,
+        .reveal-scale.visible,
+        .reveal-left.visible,
+        .reveal-right.visible,
+        .reveal-flip.visible,
         .reveal-glitch.visible {
             opacity: 1;
-            transform: translateX(0) skewX(0);
+            transform: translateY(0);
         }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
 
         /* Section divider wipe */
         .section-divider {
@@ -779,46 +716,31 @@
             transform: scaleX(1);
         }
 
-        /* 3D tilt hover for project cards */
-        .project-card {
-            perspective: 1200px;
-            transform-style: preserve-3d;
-        }
-
-        /* Hero character stagger */
-        .hero-char {
-            display: inline-block;
+        /* Hero h1 simple fade-in */
+        .hero h1 {
             opacity: 0;
-            transform: translateY(100%) rotateX(90deg);
-            animation: heroCharIn 0.8s var(--ease-out-expo) forwards;
+            transform: translateY(20px);
+            animation: heroFadeIn 0.8s ease-out 0.4s forwards;
         }
-        @keyframes heroCharIn {
-            to { opacity: 1; transform: translateY(0) rotateX(0); }
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero subtitle mask slide */
-        .hero-subtitle-mask {
-            overflow: hidden;
-        }
+        /* Hero subtitle simple fade */
         .hero-subtitle-mask .hero-subtitle {
-            animation: maskSlideUp 1s var(--ease-out-expo) 1.2s both;
-        }
-        @keyframes maskSlideUp {
-            from { opacity: 0; transform: translateY(100%); filter: blur(8px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+            opacity: 0;
+            transform: translateY(12px);
+            animation: heroFadeIn 0.8s ease-out 0.8s forwards;
         }
 
         /* CTA button entrance */
         .hero-cta-group .btn {
             opacity: 0;
-            transform: translateY(20px) scale(0.9);
-            animation: ctaIn 0.7s var(--ease-out-expo) forwards;
+            transform: translateY(12px);
+            animation: heroFadeIn 0.6s ease-out forwards;
         }
-        .hero-cta-group .btn:nth-child(1) { animation-delay: 1.6s; }
-        .hero-cta-group .btn:nth-child(2) { animation-delay: 1.8s; }
-        @keyframes ctaIn {
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+        .hero-cta-group .btn:nth-child(1) { animation-delay: 1.0s; }
+        .hero-cta-group .btn:nth-child(2) { animation-delay: 1.15s; }
 
         /* Scroll indicator delayed entrance */
         .hero-scroll-indicator {
@@ -827,38 +749,26 @@
         }
         @keyframes scrollIndIn { to { opacity: 1; } }
 
-        /* Tech card holographic shimmer */
+        /* Tech card hover */
         .tech-card {
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
-        .tech-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(105deg, transparent 40%, rgba(207,20,43,0.06) 45%, rgba(0,212,255,0.04) 50%, transparent 55%);
-            transform: translateX(-100%);
-            transition: transform 0.8s var(--ease-out-expo);
-            pointer-events: none;
-            z-index: 2;
-            border-radius: inherit;
-        }
-        .tech-card:hover::before {
-            transform: translateX(100%);
+        .tech-card:hover {
+            transform: translateY(-3px);
         }
 
-        /* Contact link magnetic hover */
+        /* Contact link hover */
         .contact-link {
-            transition: all 0.4s var(--ease-out-expo) !important;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .contact-link:hover {
-            transform: translateY(-6px) scale(1.05) !important;
-            box-shadow: 0 15px 40px rgba(207,20,43,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(207,20,43,0.1);
         }
 
         /* Page load */
-        body { animation: pageIn 0.8s ease-out; }
-        @keyframes pageIn { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+        body { animation: pageIn 0.5s ease-out; }
+        @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Navbar glass slide-down */
         .navbar { transform: translateY(-100%); animation: navSlideIn 0.6s var(--ease-out-expo) 0.4s forwards; }
@@ -2457,41 +2367,7 @@
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        /* ═══════════════════════════════════════════
-           HERO TEXT CHARACTER STAGGER
-           ═══════════════════════════════════════════ */
-        (function animateHeroText() {
-            const h1 = document.querySelector('.hero h1');
-            if (!h1) return;
-            const raw = h1.innerHTML;
-            const parts = raw.split('<br>');
-            h1.innerHTML = '';
-            let idx = 0;
-            parts.forEach((part, pi) => {
-                if (pi > 0) h1.appendChild(document.createElement('br'));
-                const tmp = document.createElement('div');
-                tmp.innerHTML = part;
-                (function walk(parent, target) {
-                    parent.childNodes.forEach(node => {
-                        if (node.nodeType === 3) {
-                            const txt = node.textContent;
-                            for (let i = 0; i < txt.length; i++) {
-                                const s = document.createElement('span');
-                                s.className = 'hero-char';
-                                s.textContent = txt[i] === ' ' ? '\u00A0' : txt[i];
-                                s.style.animationDelay = (0.3 + idx * 0.035) + 's';
-                                idx++;
-                                target.appendChild(s);
-                            }
-                        } else if (node.nodeType === 1) {
-                            const clone = node.cloneNode(false);
-                            walk(node, clone);
-                            target.appendChild(clone);
-                        }
-                    });
-                })(tmp, h1);
-            });
-        })();
+
 
         /* ═══════════════════════════════════════════
            CINEMATIC SCROLL REVEAL
@@ -2506,28 +2382,6 @@
             });
         }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
         document.querySelectorAll(revealSel).forEach(el => obs.observe(el));
-
-        /* ═══════════════════════════════════════════
-           PARALLAX ON SCROLL
-           ═══════════════════════════════════════════ */
-        const heroOrbs = document.querySelectorAll('.hero-orb');
-        const heroGrid = document.querySelector('.hero-grid');
-        let pTick = false;
-
-        function onParallax() {
-            const sy = window.scrollY;
-            heroOrbs.forEach((orb, i) => {
-                const speed = i === 0 ? 0.15 : 0.08;
-                orb.style.transform = 'translate(0,' + (sy * speed) + 'px) scale(' + (1 - sy * 0.0003) + ')';
-            });
-            if (heroGrid) {
-                heroGrid.style.transform = 'perspective(600px) rotateX(' + (65 - sy * 0.02) + 'deg)';
-            }
-            pTick = false;
-        }
-        window.addEventListener('scroll', () => {
-            if (!pTick) { requestAnimationFrame(onParallax); pTick = true; }
-        }, { passive: true });
 
         /* ═══════════════════════════════════════════
            3D MOUSE-TILT ON PROJECT CARDS
