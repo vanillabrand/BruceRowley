@@ -7,7 +7,7 @@ Personal portfolio website showcasing AI/ML engineering, 3D visualization, and r
 - **Fandom Mapper** — AI-powered social intelligence engine with 3D force graphs
 - **Nyx** — Flight Intelligence Engine for real-time aviation monitoring
 - **Crypto Trader** — AI Strategy Generator & Autotrader
-- **Persona Studio** — Autonomous AI Influencer creation and multi-channel content engine
+- **Shadow - Social Media Influencer Platform** — Autonomous AI Influencer platform and multi-channel content engine
 
 ## Tech
 
