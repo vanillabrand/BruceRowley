@@ -1359,9 +1359,15 @@
            ═══════════════════════════════════════════ */
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-top: 3rem;
+        }
+
+        @media (max-width: 1400px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .tech-card {
@@ -1676,7 +1682,7 @@
                 </div>
                 <div class="about-stats reveal-scale reveal-delay-2">
                     <div class="stat-card">
-                        <div class="stat-number">3</div>
+                        <div class="stat-number stat-value">4</div>
                         <div class="stat-label">Major Platforms</div>
                     </div>
                     <div class="stat-card">
@@ -2030,6 +2036,110 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ── PERSONA STUDIO ── -->
+            <div class="project-card reveal-right">
+                <div class="project-info">
+                    <span class="project-number">// 04</span>
+                    <h3 class="project-title">Persona Studio</h3>
+                    <p class="project-tagline">Autonomous AI influencer creation and multi-channel content engine that automates photorealistic media generation, scheduling, and brand deals.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="icon">◆</span>
+                            <span><strong>5-Step Creation Wizard</strong> — Custom character creation wizard with interactive avatar and persona traits setup</span>
+                        </li>
+                        <li>
+                            <span class="icon">◆</span>
+                            <span><strong>Image Cascade Pipeline</strong> — Multi-model auto-cascade across Flux 1.1 Pro, SD 3.5, and Imagen 3 for reliable, ultra-photorealistic generations</span>
+                        </li>
+                        <li>
+                            <span class="icon">◆</span>
+                            <span><strong>Cinematic Video Studio</strong> — Dynamic text-to-video / image-to-video processing with FFmpeg compilation into reels</span>
+                        </li>
+                        <li>
+                            <span class="icon">◆</span>
+                            <span><strong>Smart Content Calendar</strong> — Automated weekly content strategy planner with intelligent, platform-aware caption generators</span>
+                        </li>
+                        <li>
+                            <span class="icon">◆</span>
+                            <span><strong>Multi-Channel Publishing</strong> — PostPeer integrations and OAuth flows for seamless automated distribution to Instagram, TikTok, and YouTube</span>
+                        </li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-stack-label">Tech Stack</span>
+                        <div class="tech-pills">
+                            <span class="tech-pill">React 19</span>
+                            <span class="tech-pill">Vite 7</span>
+                            <span class="tech-pill">Tailwind v4</span>
+                            <span class="tech-pill">Express 5</span>
+                            <span class="tech-pill">Prisma ORM</span>
+                            <span class="tech-pill">Zustand</span>
+                            <span class="tech-pill">Framer Motion</span>
+                            <span class="tech-pill">Google Gemini</span>
+                            <span class="tech-pill">fal.ai</span>
+                            <span class="tech-pill">PostPeer API</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-container" data-carousel="persona">
+                    <div class="carousel-topbar">
+                        <div class="screen-dot red"></div>
+                        <div class="screen-dot yellow"></div>
+                        <div class="screen-dot green"></div>
+                        <span class="carousel-topbar-label">Persona Studio</span>
+                        <div class="carousel-topbar-tabs">
+                            <button class="carousel-tab active" data-filter="all">All</button>
+                            <button class="carousel-tab" data-filter="screens">Screens</button>
+                            <button class="carousel-tab" data-filter="video">Video</button>
+                        </div>
+                    </div>
+                    <div class="carousel-track">
+                        <div class="carousel-slides">
+                            <!-- Slide 1: Creator Studio -->
+                            <div class="carousel-slide" data-type="screens">
+                                <img src="assets/screenshots/persona-studio.png" alt="Creator Studio generator view" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;">
+                            </div>
+                            <!-- Slide 2: Selection Wizard -->
+                            <div class="carousel-slide" data-type="screens">
+                                <img src="assets/screenshots/persona-wizard.png" alt="Avatar selection wizard" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;">
+                            </div>
+                            <!-- Slide 3: Smart Calendar -->
+                            <div class="carousel-slide" data-type="screens">
+                                <img src="assets/screenshots/persona-calendar.png" alt="Smart weekly calendar posting" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;">
+                            </div>
+                            <!-- Slide 4: Multi-Channel Connections -->
+                            <div class="carousel-slide" data-type="screens">
+                                <img src="assets/screenshots/persona-integrations.png" alt="OAuth multi-channel connections" style="width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;">
+                            </div>
+                            <!-- Slide 5: Video Walkthrough -->
+                            <div class="carousel-slide" data-type="video">
+                                <div class="carousel-placeholder video-placeholder">
+                                    <div class="play-overlay">
+                                        <div class="play-button">▶</div>
+                                    </div>
+                                    <div class="placeholder-icon">🎬</div>
+                                    <span class="placeholder-label">Creator Walkthrough Video</span>
+                                    <span class="placeholder-sublabel">Live demonstration of the Persona generation workflow</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <div class="carousel-dots">
+                            <button class="carousel-dot active" data-index="0"></button>
+                            <button class="carousel-dot" data-index="1"></button>
+                            <button class="carousel-dot" data-index="2"></button>
+                            <button class="carousel-dot" data-index="3"></button>
+                            <button class="carousel-dot" data-index="4"></button>
+                        </div>
+                        <span class="carousel-counter">01 / 05</span>
+                        <div class="carousel-arrows">
+                            <button class="carousel-arrow" data-dir="prev">‹</button>
+                            <button class="carousel-arrow" data-dir="next">›</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2164,6 +2274,48 @@
                             <li>Web Audio API voice interaction</li>
                             <li>Live P&L and position tracking</li>
                             <li>Collapsible analytics panels</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Persona Studio Tech -->
+                <div class="tech-card reveal-flip reveal-delay-4">
+                    <div class="tech-card-header">
+                        <div class="tech-card-icon">🎭</div>
+                        <h3>Persona Studio</h3>
+                    </div>
+                    <div class="tech-card-body">
+                        <p>An autonomous creator workspace that drives AI influencer life cycles—powering multi-provider visual pipelines, automated scheduling, and active social channel integrations.</p>
+
+                        <div class="tech-detail-category">Frontend</div>
+                        <ul class="tech-detail-list">
+                            <li>React 19 &amp; Vite 7 for blazing fast rendering and HMR</li>
+                            <li>TailwindCSS v4 for unified, hardware-accelerated design tokens</li>
+                            <li>Framer Motion for fluid micro-interactions and transitions</li>
+                            <li>Zustand for lightweight and robust client-side state</li>
+                        </ul>
+
+                        <div class="tech-detail-category">Backend &amp; Database</div>
+                        <ul class="tech-detail-list">
+                            <li>Express 5 serving as a fast, modular REST API layer</li>
+                            <li>Prisma ORM with fully typed schemas &amp; migrations</li>
+                            <li>SQLite for lightning-fast development, Postgres-ready</li>
+                            <li>Secure JWT-based credential security and session tracking</li>
+                        </ul>
+
+                        <div class="tech-detail-category">AI Pipelines</div>
+                        <ul class="tech-detail-list">
+                            <li>Cascade system across Flux 1.1 Pro, SD 3.5, and Imagen 3</li>
+                            <li>Gemini 2.0 Flash for platform-tailored context captions</li>
+                            <li>Text-to-Video/Image-to-Video generators (SVD, Wan 2.1)</li>
+                            <li>FFmpeg audio/video composition for reels production</li>
+                        </ul>
+
+                        <div class="tech-detail-category">Automation</div>
+                        <ul class="tech-detail-list">
+                            <li>PostPeer OAuth multi-channel publishing flows</li>
+                            <li>Automated Content Planner for hands-free posting schedules</li>
+                            <li>Multi-stage Dockerfile and production-ready containers</li>
                         </ul>
                     </div>
                 </div>
